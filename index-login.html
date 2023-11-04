@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="form-container register-container">
+        <form>
+          <h1>Register here</h1>
+          <div class="form-control">
+            <input type="text" id="username" placeholder="Name" />
+            <small id="username-error"></small>
+            <span></span>
+          </div>
+          <div class="form-control">
+            <input type="email" id="email" placeholder="Email" />
+            <small id="email-error"></small>
+            <span></span>
+          </div>
+          <div class="form-control">
+            <input type="password" id="password" placeholder="Password" />
+            <small id="password-error"></small>
+            <span></span>
+          </div>
+          <button type="submit" value="submit" class="js-buy-tickets">
+            Register
+          </button>
+          <span>or use your account</span>
+          <div class="social-container">
+            <a href="#" class="social"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-container login-container">
+        <form class="form-lg">
+          <h1>Login here.</h1>
+          <div class="form-control2">
+            <input type="email" class="email-2" placeholder="Email" />
+            <small class="email-error-2"></small>
+            <span></span>
+          </div>
+          <div class="form-control2">
+            <input type="password" class="password-2" placeholder="Password" />
+            <small class="password-error-2"></small>
+            <span></span>
+          </div>
+
+          <div class="content">
+            <div class="checkbox">
+              <input type="checkbox" name="checkbox" id="checkbox" />
+              <label for="">Remember me</label>
+            </div>
+            <div class="pass-link">
+              <a href="#">Forgot password</a>
+            </div>
+          </div>
+
+          <button type="submit" value="submit">
+            <a href="./index.html" class="login-link">Login</a>
+          </button>
+          <span>Or use your account</span>
+          <div class="social-container">
+            <a href="#" class="social"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social"><i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </form>
+      </div>
+
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1 class="title">
+              Hello <br />
+              friends
+            </h1>
+            <p>If you have an account, login here and have fun</p>
+            <button class="ghost" id="login">
+              Login
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+          </div>
+
+          <div class="overlay-panel overlay-right">
+            <h1 class="title">
+              Start your <br />
+              journey now
+            </h1>
+            <p>
+              If you don'n have an account yet, join us and start your journey
+            </p>
+            <button class="ghost" id="register">
+              Register
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./assets/js/main.js"></script>
+  <div class="modal js-modal">
+    <div class="modal-container js-modal-container">
+      <div class="modal-close js-modal-close">
+        <i class="ti-close"></i>
+      </div>
+      <!-- modal -->
+      <header class="modal-header">
+        <div class="icon-modal">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        Đăng Ký Thành Công
+      </header>
+      <div class="modal-container-2">
+        <h4 class="modal-iteam">
+          Một email đã được gửi đến địa chỉ email của bạn <br />
+          Vui lòng kiểm tra hộp thư để hoàn tất quá trình.
+        </h4>
+      </div>
+      <footer class="modal-footer">
+        <button class="modal-btn">Đóng</button>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    const buyBtns = document.querySelectorAll(".js-buy-tickets");
+    const modal = document.querySelector(".js-modal");
+    const modalClose = document.querySelector(".js-modal-close");
+    const modalContainer = document.querySelector(".js-modal-container");
+
+    // Hàm hiển thị modal mua vé ( thêm class open vào  modal)
+    function showBuyTickets() {
+      modal.classList.add("open");
+    }
+    // Hàm ẩn modal mua vé ( gỡ bỏ class open khỏi  modal)
+    function hideBuyTickets() {
+      modal.classList.remove("open");
+    }
+    // Lặp qua từng thẻ btn và lắng nghe hành vi click
+    for (const buyBtn of buyBtns) {
+      buyBtn.addEventListener("click", showBuyTickets);
+    }
+    // Nghe hành vi click vào btn close
+    modalClose.addEventListener("click", hideBuyTickets);
+
+    modal.addEventListener("click", hideBuyTickets);
+    modalContainer.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+  </script>
+</html>
